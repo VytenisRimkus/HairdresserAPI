@@ -11,10 +11,8 @@ public static class AppConfiguration
 {
     public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IUserManagementPrivateService, UserManagementPrivateService>();
-        services.AddScoped<IUserManagementRepository, UserManagementRepository>();
+        services.AddServices();
         services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
@@ -22,6 +20,13 @@ public static class AppConfiguration
             new MySqlServerVersion(new Version(8, 0, 35)))
                 .EnableSensitiveDataLogging(true)
                 .LogTo(Console.WriteLine, LogLevel.Information));
+    }
+
+    private static void AddServices(this IServiceCollection services)
+    {
+        services.AddScoped<IUserManagementPrivateService, UserManagementPrivateService>();
+        services.AddScoped<IUserManagementRepository, UserManagementRepository>();
+        services.AddScoped<IUserMappingService, UserMappingService>();
     }
 
     public static void ConfigureApp(WebApplication app)

@@ -17,16 +17,16 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<ActionResult<User>> Register(RegistrationDto registrationDto)
+    public async Task<ActionResult<UserResponseDTO>> Register(RegistrationDto registrationDto)
     {
-        var user = await _userManagementPrivateService.RegisterUserAsync(registrationDto);
-        return Ok(user);
+        var userDto = await _userManagementPrivateService.RegisterUserAsync(registrationDto);
+        return Ok(userDto);
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<User>> Login(LoginDto loginDto)
+    public async Task<ActionResult<UserResponseDTO>> Login(LoginDto loginDto)
     {
-        var user = await _userManagementPrivateService.AuthenticateUserAsync(loginDto);
-        return Ok(user);
+        var userDto = await _userManagementPrivateService.AuthenticateUserAsync(loginDto);
+        return Ok(userDto);
     }
 }

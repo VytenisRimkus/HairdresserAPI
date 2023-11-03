@@ -10,12 +10,14 @@ namespace HairdresserAPI.UserDomain.UserManagement.Services;
 public class UserManagementPrivateService : IUserManagementPrivateService
 {
     private readonly IUserManagementRepository _userManagementRepository;
-    public UserManagementPrivateService(IUserManagementRepository userManagementRepository)
+    private readonly IUserMappingService _userMappingService;
+    public UserManagementPrivateService(IUserManagementRepository userManagementRepository, IUserMappingService userMappingService)
     {
         _userManagementRepository = userManagementRepository;
+        _userMappingService = userMappingService;
     }
 
-    public async Task<User> RegisterUserAsync(RegistrationDto registrationDto)
+    public async Task<UserResponseDTO> RegisterUserAsync(RegistrationDto registrationDto)
     {
         if (!await _userManagementRepository.IsUsernameAvailable(registrationDto.Username))
             throw new Exception("Such username already exists");
@@ -27,18 +29,21 @@ public class UserManagementPrivateService : IUserManagementPrivateService
         await _userManagementRepository.AddAsync(user);
         await _userManagementRepository.SaveChangesAsync();
 
-        return user;
+        return _userMappingService.MapUserResponseDto(user);
     }
 
-    public async Task<User> AuthenticateUserAsync(LoginDto loginDto)
+    public async Task<UserResponseDTO> AuthenticateUserAsync(LoginDto loginDto)
     {
         var user = await _userManagementRepository.GetByUsername(loginDto.Username) ?? throw new Exception("Such username does not exist");
 
         var isAuthorized = HashingUtility.VerifyPassword(user.Password, loginDto.Password);
 
-        if(isAuthorized)
-            return user;
-        
+        if (isAuthorized)
+        {
+            var userDto = _userMappingService.MapUserResponseDto(user);
+            return userDto;
+        }
+
         throw new Exception("Password is incorrect");
     }
 
