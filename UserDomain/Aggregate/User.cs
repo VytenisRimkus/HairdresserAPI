@@ -7,6 +7,10 @@ namespace HairdresserAPI.UserDomain.Aggregate;
 
 public class User
 {
+    public User()
+    {
+    }
+
     public User(string username, string password, UserTypeEnum userType)
     {
         VerifyUsername(username);

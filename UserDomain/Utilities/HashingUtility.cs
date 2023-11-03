@@ -40,20 +40,4 @@ public class HashingUtility
 
         return storedPassword == hashOfInputPassword;
     }
-
-    public static bool VerifyPassword2(string password, string storedHash)
-    {
-        var parts = storedHash.Split('.');
-        if (parts.Length != 2)
-        {
-            throw new FormatException("Unexpected hash format.");
-        }
-
-        var salt = Convert.FromBase64String(parts[0]);
-        var hash = parts[1];
-
-        var passwordHash = HashPassword(password, salt).Split('.')[1];
-
-        return passwordHash == hash;
-    }
 }

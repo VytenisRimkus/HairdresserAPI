@@ -28,6 +28,16 @@ public static class AppConfiguration
     {
         if (app.Environment.IsDevelopment())
         {
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/")
+                {
+                    context.Response.Redirect("swagger/");
+                    return;
+                }
+
+                await next.Invoke();
+            });
             app.UseSwagger();
             app.UseSwaggerUI();
         }

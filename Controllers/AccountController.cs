@@ -21,4 +21,11 @@ public class AccountController : ControllerBase
         var user = await _userManagementPrivateService.RegisterUserAsync(registrationDto);
         return Ok(user);
     }
+
+    [HttpPost("login")]
+    public async Task<ActionResult<User>> Login(LoginDto loginDto)
+    {
+        var user = await _userManagementPrivateService.AuthenticateUserAsync(loginDto);
+        return Ok(user);
+    }
 }

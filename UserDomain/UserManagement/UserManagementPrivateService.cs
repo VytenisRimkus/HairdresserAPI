@@ -31,7 +31,14 @@ public class UserManagementPrivateService : IUserManagementPrivateService
 
     public async Task<User> AuthenticateUserAsync(LoginDto loginDto)
     {
-        return null;
+        var user = await _userManagementRepository.GetByUsername(loginDto.Username) ?? throw new Exception("Such username does not exist");
+
+        var isAuthorized = HashingUtility.VerifyPassword(user.Password, loginDto.Password);
+
+        if(isAuthorized)
+            return user;
+        
+        throw new Exception("Password is incorrect");
     }
 
     private static UserTypeEnum GetUserType(RegistrationDto registrationDto)

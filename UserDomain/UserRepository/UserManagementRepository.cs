@@ -22,6 +22,15 @@ public class UserManagementRepository : IUserManagementRepository
         return user == null;
     }
 
+    public async Task<User> GetByUsername(string username)
+    {
+        var user = await _context.Users
+            .Where(x => x.Username == username)
+            .FirstOrDefaultAsync();
+
+        return user;
+    }
+
     public async Task AddAsync(User user)
     {
         await _context.Users.AddAsync(user);
