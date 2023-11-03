@@ -8,5 +8,4 @@ public interface IUserManagementRepository
     Task AddAsync(User user);
     Task SaveChangesAsync();
     Task<User> GetByUsername(string username);
-
 }
