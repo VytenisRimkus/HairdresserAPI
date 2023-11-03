@@ -1,6 +1,7 @@
 using HairdresserAPI.UserDomain.Aggregate;
 using HairdresserAPI.UserDomain.UserDTO;
 using HairdresserAPI.UserDomain.UserManagement;
+using HairdresserAPI.UserDomain.UserManagement.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HairdresserAPI.Controllers;
