@@ -1,17 +1,18 @@
 using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
+using HairdresserAPI.HairdresserDomain.HairdresserManagement.Interfaces;
 using HairdresserAPI.HairdresserDomain.HairdresserRepository;
 using HairdresserAPI.UserDomain.Enums;
 using HairdresserAPI.UserDomain.UserRepository;
 
 namespace HairdresserAPI.HairdresserDomain.HairdresserManagement.Services;
 
-public class HairdresserManagementPrivateService
+public class HairdresserPrivateService : IHairdresserPrivateService
 {
     private readonly IHairdresserRepository _hairdresserRepository;
     private readonly IUserManagementRepository _userManagementRepository;
 
-    public HairdresserManagementPrivateService(IHairdresserRepository hairdresserRepository, IUserManagementRepository userManagementRepository)
+    public HairdresserPrivateService(IHairdresserRepository hairdresserRepository, IUserManagementRepository userManagementRepository)
     {
         _hairdresserRepository = hairdresserRepository;
         _userManagementRepository = userManagementRepository;
@@ -23,7 +24,7 @@ public class HairdresserManagementPrivateService
 
         if (user.UserType == UserTypeEnum.Hairdresser || user != null)
         {
-            var hairdresser = new Hairdresser(dto.Name, dto.Biography, dto.Location, dto.PhoneNumber, dto.Email, dto.CreatedByUserId);
+            var hairdresser = new Hairdresser(dto.Name, dto.Biography, dto.Location, dto.PhoneNumber, dto.Email, userId);
             await _hairdresserRepository.AddAsync(hairdresser);
             return MapToDto(hairdresser);
         }
@@ -81,6 +82,4 @@ public class HairdresserManagementPrivateService
             Email = hairdresser.Email
         };
     }
-
-
 }

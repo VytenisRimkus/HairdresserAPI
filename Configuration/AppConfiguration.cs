@@ -1,4 +1,7 @@
 using HairdresserAPI.DatabaseContext;
+using HairdresserAPI.HairdresserDomain.HairdresserManagement.Interfaces;
+using HairdresserAPI.HairdresserDomain.HairdresserManagement.Services;
+using HairdresserAPI.HairdresserDomain.HairdresserRepository;
 using HairdresserAPI.UserDomain.UserManagement.Interfaces;
 using HairdresserAPI.UserDomain.UserManagement.Services;
 using HairdresserAPI.UserDomain.UserRepository;
@@ -27,6 +30,9 @@ public static class AppConfiguration
         services.AddScoped<IUserManagementPrivateService, UserManagementPrivateService>();
         services.AddScoped<IUserManagementRepository, UserManagementRepository>();
         services.AddScoped<IUserMappingService, UserMappingService>();
+
+        services.AddScoped<IHairdresserPrivateService, HairdresserPrivateService>();
+        services.AddScoped<IHairdresserRepository, HairdresserRepository>();
     }
 
     public static void ConfigureApp(WebApplication app)

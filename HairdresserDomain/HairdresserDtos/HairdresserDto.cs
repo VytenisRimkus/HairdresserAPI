@@ -16,7 +16,6 @@ public record CreateHairdresserDto
     public string Location { get; init; }
     public string PhoneNumber { get; init; }
     public string Email { get; init; }
-    public Guid CreatedByUserId { get; init; }
 }
 
 public record UpdateHairdresserDto
