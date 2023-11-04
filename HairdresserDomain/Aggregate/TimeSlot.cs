@@ -6,6 +6,17 @@ namespace HairdresserAPI.HairdresserDomain.Aggregate;
 
 public class TimeSlot : BaseEntity
 {
+    public TimeSlot()
+    {
+    }
+
+    public TimeSlot(DateTime startTime, DateTime endTime, Guid hairdresserId)
+    {
+        StartTime = startTime;
+        EndTime = endTime;
+        HairdresserId = hairdresserId;
+    }
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
