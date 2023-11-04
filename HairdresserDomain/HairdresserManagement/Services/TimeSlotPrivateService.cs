@@ -2,7 +2,6 @@ using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
 using HairdresserAPI.HairdresserDomain.HairdresserManagement.Interfaces;
 using HairdresserAPI.HairdresserDomain.HairdresserRepository;
-using HairdresserAPI.UserDomain.Enums;
 using HairdresserAPI.UserDomain.UserRepository;
 
 namespace HairdresserAPI.HairdresserDomain.HairdresserManagement.Services;
@@ -23,16 +22,16 @@ public class TimeSlotPrivateService : ITimeSlotPrivateService
         _userManagementRepository = userManagementRepository;
     }
 
-    public async Task<TimeSlotDto> CreateTimeSlotAsync(TimeSlotCreationDto creationDto)
+    public async Task<TimeSlotDto> CreateTimeSlotAsync(TimeSlotCreationDto creationDto, Guid hairdresserId)
     {
-        if (await _timeSlotRepository.HasOverlap(creationDto.HairdresserId, creationDto.StartTime, creationDto.EndTime))
+        if (await _timeSlotRepository.HasOverlap(hairdresserId, creationDto.StartTime, creationDto.EndTime))
         {
             throw new Exception("Time slot overlaps with existing slot.");
         }
 
         var timeSlot = new TimeSlot
         {
-            HairdresserId = creationDto.HairdresserId,
+            HairdresserId = hairdresserId
             StartTime = creationDto.StartTime,
             EndTime = creationDto.EndTime
         };
@@ -42,7 +41,6 @@ public class TimeSlotPrivateService : ITimeSlotPrivateService
         return new TimeSlotDto
         {
             Id = timeSlot.Id,
-            HairdresserId = timeSlot.HairdresserId,
             StartTime = timeSlot.StartTime,
             EndTime = timeSlot.EndTime
         };
@@ -54,7 +52,6 @@ public class TimeSlotPrivateService : ITimeSlotPrivateService
         return timeSlots.Select(ts => new TimeSlotDto
         {
             Id = ts.Id,
-            HairdresserId = ts.HairdresserId,
             StartTime = ts.StartTime,
             EndTime = ts.EndTime
         });
