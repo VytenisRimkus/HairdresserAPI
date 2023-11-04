@@ -36,7 +36,7 @@ public class Hairdresser : BaseEntity
     public virtual ICollection<Service> Services { get; set; } = new List<Service>();
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
-     public virtual ICollection<TimeSlot> AvailableTimeSlots { get; set; } = new List<TimeSlot>();
+    public virtual ICollection<TimeSlot> AvailableTimeSlots { get; set; } = new List<TimeSlot>();
 
     [StringLength(20)]
     public string PhoneNumber { get; set; }

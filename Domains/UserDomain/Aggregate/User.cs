@@ -1,11 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HairdresserAPI.SharedDomain;
 using HairdresserAPI.UserDomain.Enums;
 using HairdresserAPI.Utilities;
 
 namespace HairdresserAPI.UserDomain.Aggregate;
 
-public class User
+public class User : BaseEntity
 {
     public User()
     {
@@ -17,8 +18,6 @@ public class User
         VerifyPassword(password);
 
         Id = Guid.NewGuid();
-        CreatedDate = DateTime.UtcNow;
-        ModfiedDate = null;
         Username = username;
         Password = HashingUtility.HashPassword(password);
         UserType = userType;
@@ -27,11 +26,6 @@ public class User
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; private set; }
-
-    [Required]
-    public DateTime CreatedDate { get; private set; }
-
-    public DateTime? ModfiedDate { get; private set; }
 
     [Required]
     [StringLength(50)]
