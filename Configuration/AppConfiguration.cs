@@ -33,6 +33,9 @@ public static class AppConfiguration
 
         services.AddScoped<IHairdresserPrivateService, HairdresserPrivateService>();
         services.AddScoped<IHairdresserRepository, HairdresserRepository>();
+
+        services.AddScoped<ITimeSlotPrivateService, TimeSlotPrivateService>();
+        services.AddScoped<ITimeSlotRepository, TimeSlotRepository>();
     }
 
     public static void ConfigureApp(WebApplication app)

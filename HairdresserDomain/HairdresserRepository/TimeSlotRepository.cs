@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HairdresserAPI.HairdresserDomain.HairdresserRepository;
 
-public class TimeSlotRepository
+public class TimeSlotRepository : ITimeSlotRepository
 {
     private readonly AppDbContext _context;
 
