@@ -1,3 +1,4 @@
+using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.UserDomain.Aggregate;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,4 +18,7 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Service> Service { get; set; }
+    public DbSet<Hairdresser> Hairdresser { get; set; }
+    public DbSet<Review> Review { get; set; }
 }
