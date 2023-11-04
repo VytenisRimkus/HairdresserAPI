@@ -1,6 +1,6 @@
 using HairdresserAPI.UserDomain.Aggregate;
 
-namespace HairdresserAPI.UserDomain.UserRepository;
+namespace HairdresserAPI.Interfaces;
 
 public interface IUserManagementRepository
 {

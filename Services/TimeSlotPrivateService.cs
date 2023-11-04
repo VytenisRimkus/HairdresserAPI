@@ -1,10 +1,8 @@
 using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
-using HairdresserAPI.HairdresserDomain.HairdresserManagement.Interfaces;
-using HairdresserAPI.HairdresserDomain.HairdresserRepository;
-using HairdresserAPI.UserDomain.UserRepository;
+using HairdresserAPI.Interfaces;
 
-namespace HairdresserAPI.HairdresserDomain.HairdresserManagement.Services;
+namespace HairdresserAPI.Services;
 
 public class TimeSlotPrivateService : ITimeSlotPrivateService
 {

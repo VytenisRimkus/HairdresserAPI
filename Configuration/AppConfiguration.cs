@@ -1,10 +1,7 @@
 using HairdresserAPI.DatabaseContext;
-using HairdresserAPI.HairdresserDomain.HairdresserManagement.Interfaces;
-using HairdresserAPI.HairdresserDomain.HairdresserManagement.Services;
-using HairdresserAPI.HairdresserDomain.HairdresserRepository;
-using HairdresserAPI.UserDomain.UserManagement.Interfaces;
-using HairdresserAPI.UserDomain.UserManagement.Services;
-using HairdresserAPI.UserDomain.UserRepository;
+using HairdresserAPI.Interfaces;
+using HairdresserAPI.Repositories;
+using HairdresserAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 

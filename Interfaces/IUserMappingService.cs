@@ -1,7 +1,7 @@
 using HairdresserAPI.UserDomain.Aggregate;
 using HairdresserAPI.UserDomain.UserDTO;
 
-namespace HairdresserAPI.UserDomain.UserManagement.Interfaces;
+namespace HairdresserAPI.Interfaces;
 
 public interface IUserMappingService
 {

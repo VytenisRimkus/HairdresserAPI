@@ -1,8 +1,9 @@
 using HairdresserAPI.DatabaseContext;
 using HairdresserAPI.HairdresserDomain.Aggregate;
+using HairdresserAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace HairdresserAPI.HairdresserDomain.HairdresserRepository;
+namespace HairdresserAPI.Repositories;
 
 public class HairdresserRepository : IHairdresserRepository
 {

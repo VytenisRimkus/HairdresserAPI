@@ -1,6 +1,6 @@
 using HairdresserAPI.HairdresserDomain.Aggregate;
 
-namespace HairdresserAPI.HairdresserDomain.HairdresserRepository;
+namespace HairdresserAPI.Interfaces;
 
 public interface IHairdresserRepository
 {

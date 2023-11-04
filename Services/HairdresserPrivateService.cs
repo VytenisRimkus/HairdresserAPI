@@ -1,11 +1,9 @@
 using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
-using HairdresserAPI.HairdresserDomain.HairdresserManagement.Interfaces;
-using HairdresserAPI.HairdresserDomain.HairdresserRepository;
+using HairdresserAPI.Interfaces;
 using HairdresserAPI.UserDomain.Enums;
-using HairdresserAPI.UserDomain.UserRepository;
 
-namespace HairdresserAPI.HairdresserDomain.HairdresserManagement.Services;
+namespace HairdresserAPI.Services;
 
 public class HairdresserPrivateService : IHairdresserPrivateService
 {

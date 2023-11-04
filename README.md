@@ -24,7 +24,7 @@
 ### Adding/Creating a migration
 
 ## Add Migration
-- Console: `dotnet ef migrations add InitialMigration --output-dir Migrations`
+- Console: `dotnet ef migrations add InitialMigration --output-dir DatabaseContext/Migrations`
 
 ## List existing migrations
 

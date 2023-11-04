@@ -1,11 +1,10 @@
+using HairdresserAPI.Interfaces;
 using HairdresserAPI.UserDomain.Aggregate;
 using HairdresserAPI.UserDomain.Enums;
 using HairdresserAPI.UserDomain.UserDTO;
-using HairdresserAPI.UserDomain.UserManagement.Interfaces;
-using HairdresserAPI.UserDomain.UserRepository;
-using HairdresserAPI.UserDomain.Utilities;
+using HairdresserAPI.Utilities;
 
-namespace HairdresserAPI.UserDomain.UserManagement.Services;
+namespace HairdresserAPI.Services;
 
 public class UserManagementPrivateService : IUserManagementPrivateService
 {

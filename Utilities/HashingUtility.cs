@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-namespace HairdresserAPI.UserDomain.Utilities;
+namespace HairdresserAPI.Utilities;
 
 public class HashingUtility
 {

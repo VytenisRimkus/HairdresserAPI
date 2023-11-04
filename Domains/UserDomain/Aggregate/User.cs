@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using HairdresserAPI.UserDomain.Enums;
-using HairdresserAPI.UserDomain.Utilities;
+using HairdresserAPI.Utilities;
 
 namespace HairdresserAPI.UserDomain.Aggregate;
 

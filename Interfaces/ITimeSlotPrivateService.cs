@@ -1,6 +1,6 @@
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
 
-namespace HairdresserAPI.HairdresserDomain.HairdresserManagement.Interfaces;
+namespace HairdresserAPI.Interfaces;
 
 public interface ITimeSlotPrivateService
 {
