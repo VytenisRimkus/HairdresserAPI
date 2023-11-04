@@ -18,7 +18,7 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
-    public DbSet<Service> Service { get; set; }
-    public DbSet<Hairdresser> Hairdresser { get; set; }
-    public DbSet<Review> Review { get; set; }
+    public DbSet<Service> Services { get; set; }
+    public DbSet<Hairdresser> Hairdressers { get; set; }
+    public DbSet<Review> Reviews { get; set; }
 }
