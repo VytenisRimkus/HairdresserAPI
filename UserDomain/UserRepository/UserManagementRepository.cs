@@ -31,6 +31,15 @@ public class UserManagementRepository : IUserManagementRepository
         return user;
     }
 
+    public async Task<User> GetById(Guid id)
+    {
+        var user = await _context.Users
+            .Where(x => x.Id == id)
+            .FirstOrDefaultAsync();
+
+        return user;
+    }
+
     public async Task AddAsync(User user)
     {
         await _context.Users.AddAsync(user);

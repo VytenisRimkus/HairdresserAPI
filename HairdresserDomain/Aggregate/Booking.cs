@@ -16,6 +16,7 @@ public class Booking : BaseEntity
         AppointmentDate = appointmentDate;
         UserId = userId;
         HairdresserId = hairdresserId;
+        IsCompleted = false;
     }
 
     [Key]
@@ -32,4 +33,7 @@ public class Booking : BaseEntity
     [ForeignKey("Hairdresser")]
     public Guid HairdresserId { get; set; }
     public virtual Hairdresser Hairdresser { get; set; }
+
+    [Column(TypeName = "bit")]
+    public bool IsCompleted { get; set; }
 }

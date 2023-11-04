@@ -10,13 +10,14 @@ public class Hairdresser : BaseEntity
     {
     }
 
-    public Hairdresser(string name, string biography, string location, string phoneNumber, string email)
+    public Hairdresser(string name, string biography, string location, string phoneNumber, string email, Guid createdByUserId)
     {
         Name = name;
         Biography = biography;
         Location = location;
         PhoneNumber = phoneNumber;
         Email = email;
+        CreatedByUserId = createdByUserId;
     }
 
     [Key]
@@ -41,4 +42,6 @@ public class Hairdresser : BaseEntity
 
     [StringLength(30)]
     public string Email { get; set; }
+
+    public Guid CreatedByUserId { get; set; }
 }
