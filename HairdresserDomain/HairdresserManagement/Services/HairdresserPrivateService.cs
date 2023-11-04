@@ -22,7 +22,7 @@ public class HairdresserPrivateService : IHairdresserPrivateService
     {
         var user = await _userManagementRepository.GetById(userId);
 
-        if (user.UserType == UserTypeEnum.Hairdresser || user != null)
+        if (user.UserType == UserTypeEnum.Hairdresser && user != null)
         {
             var hairdresser = new Hairdresser(dto.Name, dto.Biography, dto.Location, dto.PhoneNumber, dto.Email, userId);
             await _hairdresserRepository.AddAsync(hairdresser);
@@ -71,7 +71,7 @@ public class HairdresserPrivateService : IHairdresserPrivateService
         await _hairdresserRepository.DeleteAsync(hairdresser);
     }
 
-    private HairdresserDto MapToDto(Hairdresser hairdresser)
+    private static HairdresserDto MapToDto(Hairdresser hairdresser)
     {
         return new HairdresserDto
         {
