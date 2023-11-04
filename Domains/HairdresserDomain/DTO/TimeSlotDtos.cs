@@ -5,6 +5,14 @@ public record TimeSlotDto
     public Guid Id { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
+    public bool IsBooked { get; set; }
+}
+
+public record TimeSlotGetDto
+{
+    public DateTime StartTime { get; set; }
+    public DateTime EndTime { get; set; }
+    public bool IsBooked { get; set; }
 }
 
 public record TimeSlotCreationDto

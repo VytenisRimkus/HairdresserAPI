@@ -37,7 +37,7 @@ public class HairdresserPrivateService : IHairdresserPrivateService
         {
             throw new Exception("Hairdresser not found.");
         }
-        return MapToDto(hairdresser);
+        return MapToDtoWithTimeSlots(hairdresser);
     }
 
     public async Task<HairdresserDto> UpdateHairdresserAsync(Guid id, UpdateHairdresserDto dto, Guid userId)
@@ -78,6 +78,27 @@ public class HairdresserPrivateService : IHairdresserPrivateService
             Location = hairdresser.Location,
             PhoneNumber = hairdresser.PhoneNumber,
             Email = hairdresser.Email
+        };
+    }
+
+    private static HairdresserDto MapToDtoWithTimeSlots(Hairdresser hairdresser)
+    {
+        var timeSlotDtos = hairdresser.AvailableTimeSlots
+            .Select(ts => new TimeSlotGetDto
+            {
+                StartTime = ts.StartTime,
+                EndTime = ts.EndTime,
+                IsBooked = ts.IsBooked
+            }).ToList();
+
+        return new HairdresserDto
+        {
+            Name = hairdresser.Name,
+            Biography = hairdresser.Biography,
+            Location = hairdresser.Location,
+            PhoneNumber = hairdresser.PhoneNumber,
+            Email = hairdresser.Email,
+            TimeSlots = timeSlotDtos
         };
     }
 }

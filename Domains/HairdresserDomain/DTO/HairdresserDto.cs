@@ -7,6 +7,7 @@ public record HairdresserDto
     public string Location { get; init; }
     public string PhoneNumber { get; init; }
     public string Email { get; init; }
+    public List<TimeSlotGetDto> TimeSlots { get; init; }
 }
 
 public record CreateHairdresserDto

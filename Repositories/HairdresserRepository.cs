@@ -16,7 +16,14 @@ public class HairdresserRepository : IHairdresserRepository
 
     public async Task<Hairdresser> GetByIdAsync(Guid id)
     {
-        return await _context.Hairdressers.FindAsync(id);
+        var hairdresser = await _context.Hairdressers
+            .Include(h => h.AvailableTimeSlots)
+            .Include(h => h.Bookings)
+            .Include(h => h.Reviews)
+            .Include(h => h.Services)
+            .FirstOrDefaultAsync(h => h.Id == id);
+        
+        return hairdresser;
     }
 
     public async Task<List<Hairdresser>> GetAllAsync()
