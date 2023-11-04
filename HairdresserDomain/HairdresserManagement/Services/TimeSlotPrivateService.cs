@@ -31,7 +31,7 @@ public class TimeSlotPrivateService : ITimeSlotPrivateService
 
         var timeSlot = new TimeSlot
         {
-            HairdresserId = hairdresserId
+            HairdresserId = hairdresserId,
             StartTime = creationDto.StartTime,
             EndTime = creationDto.EndTime
         };
