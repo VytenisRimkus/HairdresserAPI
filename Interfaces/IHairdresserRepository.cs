@@ -9,4 +9,6 @@ public interface IHairdresserRepository
     Task AddAsync(Hairdresser hairdresser);
     Task UpdateAsync(Hairdresser hairdresser);
     Task DeleteAsync(Hairdresser hairdresser);
+    Task<List<Hairdresser>> GetManyByIdAsync(Guid guid);
+
 }

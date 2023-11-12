@@ -22,6 +22,13 @@ public class HairdresserController : ControllerBase
         return Ok(hairdresserDto);
     }
 
+    [HttpGet("getListById")]
+    public async Task<ActionResult<HairdresserDto>> GetHairdresserListById(string userId)
+    {
+        var hairdresserDto = await _hairdresserPrivateService.GetHairdresserListByIdAsync(Guid.Parse(userId));
+        return Ok(hairdresserDto);
+    }
+
     [HttpGet("get")]
     public async Task<ActionResult<HairdresserDto>> GetById(Guid id)
     {

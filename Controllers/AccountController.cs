@@ -33,6 +33,6 @@ public class AccountController : ControllerBase
     {
         var user = await _userManagementPrivateService.AuthenticateUserAsync(loginDto);
         var token = _authService.GenerateJwtToken(user);
-        return Ok(new { token, username = user.Username, role = user.UserType });
+        return Ok(new { token, username = user.Username, role = user.UserType, id = user.Id });
     }
 }

@@ -57,6 +57,12 @@ public class HairdresserPrivateService : IHairdresserPrivateService
 
         return MapToDto(hairdresser);
     }
+    public async Task<List<Hairdresser>> GetHairdresserListByIdAsync(Guid guid)
+    {
+        var hairdressers = await _hairdresserRepository.GetManyByIdAsync(guid);
+
+        return hairdressers;
+    }
 
     public async Task DeleteHairdresserAsync(Guid id, Guid userId)
     {

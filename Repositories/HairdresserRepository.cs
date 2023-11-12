@@ -48,4 +48,13 @@ public class HairdresserRepository : IHairdresserRepository
         _context.Hairdressers.Remove(hairdresser);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<List<Hairdresser>> GetManyByIdAsync(Guid guid)
+    {
+        var hairdressers = await _context.Hairdressers
+            .Where(x => x.CreatedByUserId == guid)
+            .ToListAsync();
+
+        return hairdressers;
+    }
 }
