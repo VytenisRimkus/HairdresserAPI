@@ -6,5 +6,5 @@ namespace HairdresserAPI.Interfaces;
 public interface IUserManagementPrivateService
 {
     Task<UserResponseDTO> RegisterUserAsync(RegistrationDto registrationDto);
-    Task<UserResponseDTO> AuthenticateUserAsync(LoginDto loginDto);
+    Task<User> AuthenticateUserAsync(LoginDto loginDto);
 }

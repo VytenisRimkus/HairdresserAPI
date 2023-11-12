@@ -31,7 +31,7 @@ public class UserManagementPrivateService : IUserManagementPrivateService
         return _userMappingService.MapUserResponseDto(user);
     }
 
-    public async Task<UserResponseDTO> AuthenticateUserAsync(LoginDto loginDto)
+    public async Task<User> AuthenticateUserAsync(LoginDto loginDto)
     {
         var user = await _userManagementRepository.GetByUsername(loginDto.Username) ?? throw new Exception("Such username does not exist");
 
@@ -40,7 +40,7 @@ public class UserManagementPrivateService : IUserManagementPrivateService
         if (isAuthorized)
         {
             var userDto = _userMappingService.MapUserResponseDto(user);
-            return userDto;
+            return user;
         }
 
         throw new Exception("Password is incorrect");

@@ -1,6 +1,11 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using HairdresserAPI.Interfaces;
+using HairdresserAPI.UserDomain.Aggregate;
 using HairdresserAPI.UserDomain.UserDTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HairdresserAPI.Controllers;
 
@@ -9,9 +14,11 @@ namespace HairdresserAPI.Controllers;
 public class AccountController : ControllerBase
 {
     private readonly IUserManagementPrivateService _userManagementPrivateService;
-    public AccountController(IUserManagementPrivateService userManagementPrivateService)
+    private readonly IAuthService _authService;
+    public AccountController(IUserManagementPrivateService userManagementPrivateService, IAuthService authService)
     {
         _userManagementPrivateService = userManagementPrivateService;
+        _authService = authService;
     }
 
     [HttpPost("register")]
@@ -22,9 +29,10 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<UserResponseDTO>> Login(LoginDto loginDto)
+    public async Task<ActionResult> Login(LoginDto loginDto)
     {
-        var userDto = await _userManagementPrivateService.AuthenticateUserAsync(loginDto);
-        return Ok(userDto);
+        var user = await _userManagementPrivateService.AuthenticateUserAsync(loginDto);
+        var token = _authService.GenerateJwtToken(user);
+        return Ok(new { token, username = user.Username, role = user.UserType });
     }
 }

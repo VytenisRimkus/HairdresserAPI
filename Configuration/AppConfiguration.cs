@@ -20,6 +20,15 @@ public static class AppConfiguration
             new MySqlServerVersion(new Version(8, 0, 35)))
                 .EnableSensitiveDataLogging(true)
                 .LogTo(Console.WriteLine, LogLevel.Information));
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builder => builder.WithOrigins("http://localhost:4200")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
+        });
+
     }
 
     private static void AddServices(this IServiceCollection services)
@@ -33,6 +42,8 @@ public static class AppConfiguration
 
         services.AddScoped<ITimeSlotPrivateService, TimeSlotPrivateService>();
         services.AddScoped<ITimeSlotRepository, TimeSlotRepository>();
+
+        services.AddScoped<IAuthService, AuthService>();
     }
 
     public static void ConfigureApp(WebApplication app)
@@ -58,5 +69,6 @@ public static class AppConfiguration
         app.UseAuthorization();
 
         app.MapControllers();
+        app.UseCors("AllowSpecificOrigin");
     }
 }
