@@ -16,7 +16,7 @@ public class AuthService : IAuthService
     public string GenerateJwtToken(User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes("XD");
+        var key = Encoding.ASCII.GetBytes("350961871774de4291ac29822121fda333577e3bb36d2c96c1874c8cd7ac5187");
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
