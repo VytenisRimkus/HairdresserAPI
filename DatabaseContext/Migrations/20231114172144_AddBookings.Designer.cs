@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HairdresserAPI.DatabaseContext.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231114170047_AddBooking")]
-    partial class AddBooking
+    [Migration("20231114172144_AddBookings")]
+    partial class AddBookings
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,7 @@ namespace HairdresserAPI.DatabaseContext.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Bookings");
+                    b.ToTable("Booking");
                 });
 
             modelBuilder.Entity("HairdresserAPI.HairdresserDomain.Aggregate.Hairdresser", b =>

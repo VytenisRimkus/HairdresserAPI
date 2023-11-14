@@ -49,7 +49,7 @@ namespace HairdresserAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Bookings");
+                    b.ToTable("Booking");
                 });
 
             modelBuilder.Entity("HairdresserAPI.HairdresserDomain.Aggregate.Hairdresser", b =>
@@ -229,25 +229,6 @@ namespace HairdresserAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("HairdresserAPI.HairdresserDomain.Aggregate.Booking", b =>
-                {
-                    b.HasOne("HairdresserAPI.HairdresserDomain.Aggregate.Hairdresser", "Hairdresser")
-                        .WithMany("Bookings")
-                        .HasForeignKey("HairdresserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HairdresserAPI.UserDomain.Aggregate.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Hairdresser");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HairdresserAPI.HairdresserDomain.Aggregate.Review", b =>
