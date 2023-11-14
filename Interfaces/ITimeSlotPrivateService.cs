@@ -1,3 +1,4 @@
+using HairdresserAPI.Domains.UserDomain.Enums;
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
 
 namespace HairdresserAPI.Interfaces;
@@ -8,4 +9,5 @@ public interface ITimeSlotPrivateService
     Task<IEnumerable<TimeSlotDto>> GetTimeSlotsByHairdresserIdAsync(Guid hairdresserId);
     Task UpdateTimeSlotAsync(Guid id, TimeSlotUpdateDto updateDto);
     Task DeleteTimeSlotAsync(Guid id);
+    Task UpdateTimeSlotStateAsync(Guid guid);
 }

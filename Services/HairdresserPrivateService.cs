@@ -64,6 +64,13 @@ public class HairdresserPrivateService : IHairdresserPrivateService
         return hairdressers;
     }
 
+    public async Task<List<Hairdresser>> GetHairdresserListAsync()
+    {
+        var hairdressers = await _hairdresserRepository.GetManyAsync();
+
+        return hairdressers;
+    }
+
     public async Task DeleteHairdresserAsync(Guid id, Guid userId)
     {
         var hairdresser = await _hairdresserRepository.GetByIdAsync(id);
@@ -90,8 +97,9 @@ public class HairdresserPrivateService : IHairdresserPrivateService
     private static HairdresserDto MapToDtoWithTimeSlots(Hairdresser hairdresser)
     {
         var timeSlotDtos = hairdresser.AvailableTimeSlots
-            .Select(ts => new TimeSlotGetDto
+            .Select(ts => new TimeSlotDto
             {
+                Id = ts.Id,
                 StartTime = ts.StartTime,
                 EndTime = ts.EndTime,
                 IsBooked = ts.IsBooked

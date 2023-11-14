@@ -57,4 +57,9 @@ public class HairdresserRepository : IHairdresserRepository
 
         return hairdressers;
     }
+
+    public async Task<List<Hairdresser>> GetManyAsync()
+    {
+        return await _context.Hairdressers.ToListAsync();
+    }
 }

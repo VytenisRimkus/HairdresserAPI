@@ -10,4 +10,5 @@ public interface IHairdresserPrivateService
     Task<HairdresserDto> UpdateHairdresserAsync(Guid id, UpdateHairdresserDto dto, Guid userId);
     Task DeleteHairdresserAsync(Guid id, Guid userId);
     Task<List<Hairdresser>> GetHairdresserListByIdAsync(Guid guid);
+    Task<List<Hairdresser>> GetHairdresserListAsync();
 }

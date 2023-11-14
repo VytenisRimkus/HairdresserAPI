@@ -1,4 +1,5 @@
 using HairdresserAPI.DatabaseContext;
+using HairdresserAPI.Domains.UserDomain.Enums;
 using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +56,21 @@ public class TimeSlotRepository : ITimeSlotRepository
                             ((startTime >= ts.StartTime && startTime < ts.EndTime) ||
                              (endTime > ts.StartTime && endTime <= ts.EndTime) ||
                              (ts.StartTime >= startTime && ts.StartTime < endTime)));
+    }
+
+    public async Task UpdateTimeSlotStateAsync(Guid guid)
+    {
+        var timeSlot = await _context.TimeSlots.FirstOrDefaultAsync(x => x.Id == guid);
+
+        if (timeSlot == null)
+        {
+            throw new KeyNotFoundException("TimeSlot not found.");
+        }
+
+        timeSlot.IsBooked = !timeSlot.IsBooked;
+
+        _context.Entry(timeSlot).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
     }
 }
 

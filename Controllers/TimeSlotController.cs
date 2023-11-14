@@ -15,7 +15,7 @@ public class TimeSlotController : ControllerBase
         _timeSlotService = timeSlotService;
     }
 
-    [HttpPost("createTimeSlot")]
+    [HttpPost("createTimeSlot/{hairdresserId}")]
     public async Task<IActionResult> CreateTimeSlot([FromBody] TimeSlotCreationDto creationDto, string hairdresserId)
     {
         var timeSlotDto = await _timeSlotService.CreateTimeSlotAsync(creationDto, Guid.Parse(hairdresserId));
@@ -36,13 +36,20 @@ public class TimeSlotController : ControllerBase
         return NoContent();
     }
 
+    [HttpPut("updateTimeSlotState/{id}")]
+    public async Task<IActionResult> UpdateTimeSlotState(string id)
+    {
+        await _timeSlotService.UpdateTimeSlotStateAsync(Guid.Parse(id));
+        return NoContent();
+    }
 
-    [HttpDelete("deleteTimeSlot")]
-    public async Task<IActionResult> DeleteTimeSlot(Guid id)
+
+    [HttpDelete("deleteTimeSlot/{id}")]
+    public async Task<IActionResult> DeleteTimeSlot(string id)
     {
         try
         {
-            await _timeSlotService.DeleteTimeSlotAsync(id);
+            await _timeSlotService.DeleteTimeSlotAsync(Guid.Parse(id));
             return NoContent();
         }
         catch (Exception ex)

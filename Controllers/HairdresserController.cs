@@ -1,3 +1,4 @@
+using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
 using HairdresserAPI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -15,24 +16,31 @@ public class HairdresserController : ControllerBase
         _hairdresserPrivateService = hairdresserPrivateService;
     }
 
-    [HttpPost("createHairdresser")]
+    [HttpPost("createHairdresser/{userId}")]
     public async Task<ActionResult<HairdresserDto>> Create(CreateHairdresserDto createHairdresserDto, string userId)
     {
         var hairdresserDto = await _hairdresserPrivateService.CreateHairdresserAsync(createHairdresserDto, Guid.Parse(userId));
         return Ok(hairdresserDto);
     }
 
-    [HttpGet("getListById")]
-    public async Task<ActionResult<HairdresserDto>> GetHairdresserListById(string userId)
+    [HttpGet("getListById/{userId}")]
+    public async Task<ActionResult<Hairdresser>> GetHairdresserListById(string userId)
     {
         var hairdresserDto = await _hairdresserPrivateService.GetHairdresserListByIdAsync(Guid.Parse(userId));
         return Ok(hairdresserDto);
     }
 
-    [HttpGet("get")]
-    public async Task<ActionResult<HairdresserDto>> GetById(Guid id)
+    [HttpGet("getListById")]
+    public async Task<ActionResult<Hairdresser>> GetHairdresserList()
     {
-        var hairdresserDto = await _hairdresserPrivateService.GetHairdresserByIdAsync(id);
+        var hairdresserDto = await _hairdresserPrivateService.GetHairdresserListAsync();
+        return Ok(hairdresserDto);
+    }
+
+    [HttpGet("get/{id}")]
+    public async Task<ActionResult<HairdresserDto>> GetById(string id)
+    {
+        var hairdresserDto = await _hairdresserPrivateService.GetHairdresserByIdAsync(Guid.Parse(id));
         return Ok(hairdresserDto);
     }
 
@@ -43,7 +51,6 @@ public class HairdresserController : ControllerBase
         return Ok(updatedHairdresserDto);
     }
 
-    // Delete a hairdresser
     [HttpDelete("deleteHairdresser")]
     public async Task<IActionResult> Delete(Guid id, string userId)
     {

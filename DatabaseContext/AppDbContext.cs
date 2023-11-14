@@ -22,4 +22,5 @@ public class AppDbContext : DbContext
     public DbSet<Hairdresser> Hairdressers { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<TimeSlot> TimeSlots { get; set; }
+    public DbSet<Booking> Bookings { get; set; }
 }

@@ -1,3 +1,4 @@
+using HairdresserAPI.Domains.UserDomain.Enums;
 using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
 using HairdresserAPI.Interfaces;
@@ -77,5 +78,10 @@ public class TimeSlotPrivateService : ITimeSlotPrivateService
     public async Task DeleteTimeSlotAsync(Guid id)
     {
         await _timeSlotRepository.DeleteTimeSlotAsync(id);
+    }
+
+    public async Task UpdateTimeSlotStateAsync(Guid guid)
+    {
+        await _timeSlotRepository.UpdateTimeSlotStateAsync(guid);
     }
 }

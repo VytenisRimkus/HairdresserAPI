@@ -1,3 +1,4 @@
+using HairdresserAPI.Domains.UserDomain.Enums;
 using HairdresserAPI.HairdresserDomain.Aggregate;
 
 namespace HairdresserAPI.Interfaces;
@@ -10,4 +11,6 @@ public interface ITimeSlotRepository
     Task DeleteTimeSlotAsync(Guid timeSlotId);
     Task<TimeSlot> GetTimeSlotByIdAsync(Guid timeSlotId);
     Task<bool> HasOverlap(Guid hairdresserId, DateTime startTime, DateTime endTime);
+    Task UpdateTimeSlotStateAsync(Guid guid);
+
 }
