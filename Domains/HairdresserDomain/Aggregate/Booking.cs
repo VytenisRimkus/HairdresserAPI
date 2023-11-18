@@ -36,4 +36,9 @@ public class Booking : BaseEntity
 
     [Column(TypeName = "bit")]
     public bool IsCompleted { get; set; }
+
+    public void SetAsCompleted()
+    {
+        IsCompleted = true;
+    }
 }

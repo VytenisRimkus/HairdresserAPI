@@ -24,4 +24,16 @@ public class BookingRepository : IBookingRepository
     {
         return await _context.Bookings.Where(x => x.UserId == userId).ToListAsync();
     }
+
+    public async Task<Booking> GetById(string bookingId)
+    {
+        var booking = await _context.Bookings.Where(x => x.Id == Guid.Parse(bookingId)).FirstOrDefaultAsync();
+
+        return booking;
+    }
+
+    public async Task Save()
+    {
+        await _context.SaveChangesAsync();
+    }
 }
