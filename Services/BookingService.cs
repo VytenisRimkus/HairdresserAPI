@@ -28,4 +28,18 @@ public class BookingService : IBookingPrivateService
         return bookings;
     }
 
+    public async Task<Booking> SetBookingAsCompleted( string bookingId)
+    {
+        var booking = await _bookingRepository.GetById(bookingId);
+
+        if(booking == null)
+            throw new Exception("Booking not found");
+
+        booking.SetAsCompleted();
+
+        await _bookingRepository.Save();
+
+        return booking;
+    }
+
 }

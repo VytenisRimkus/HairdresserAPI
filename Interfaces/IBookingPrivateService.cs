@@ -9,4 +9,5 @@ public interface IBookingPrivateService
 {
     Task<Booking> AddBooking(BookingDto bookingDto);
     Task<List<Booking>> GetMyBookings(Guid userId);
+    Task<Booking> SetBookingAsCompleted(string bookingId);
 }
