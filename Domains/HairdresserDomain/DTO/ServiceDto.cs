@@ -1,3 +1,4 @@
+
 namespace HairdresserAPI.HairdresserDomain.HairdresserDtos;
 
 public record ServiceDto
