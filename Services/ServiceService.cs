@@ -21,4 +21,11 @@ public class ServiceService : IServiceService
 
         return service;
     }
+
+    public async Task<Service> FindById (Guid serviceId)
+    {
+        var service = await _serviceRepository.FindById(serviceId);
+
+        return service;
+    }
 }

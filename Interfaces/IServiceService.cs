@@ -4,5 +4,6 @@ namespace HairdresserAPI.Interfaces;
 
 public interface IServiceService
 {
-    Task AddService(ServiceDto service);
+    Task<Service> AddService(ServiceDto service);
+    Task<Service> FindById (Guid serviceId);
 }

@@ -19,6 +19,13 @@ public class ServiceController : ControllerBase
     public async Task<Service> AddService(ServiceDto service)
     {
         var service = await _serviceService.AddService(service);
-        return Ok(userDto);
+        return Ok(service);
+    }
+
+    [HttpPost("getById")]
+    public async Task<Service> GetById(string serviceId)
+    {
+        var service = await _serviceService.GetById(Guid.Parse(serviceId));
+        return Ok(service);
     }
 }

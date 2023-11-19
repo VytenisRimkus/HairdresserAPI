@@ -19,4 +19,11 @@ public class ServiceRepository : IServiceRepository
         await _context.Service.AddAsync(service);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<Service> FindById(Guid id)
+    {
+        var service = _context.Service.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+        return service;
+    }
 }
