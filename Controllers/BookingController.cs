@@ -28,4 +28,18 @@ public class BookingController : ControllerBase
         var bookings = await _bookingService.GetMyBookings(Guid.Parse(userId));
         return Ok(bookings);
     }
+
+    [HttpGet("getHairdresserBookings/{id}")]
+    public async Task<IActionResult> GetBookingsByHairdresser(string id)
+    {
+        var bookings = await _bookingService.GetMyBookingsByHairdresser(Guid.Parse(id));
+        return Ok(bookings);
+    }
+
+    [HttpPut("completeBooking/{id}")]
+    public async Task<IActionResult> CompleteBooking(string id)
+    {
+        var booking = await _bookingService.CompleteBooking(Guid.Parse(id));
+        return Ok(booking);
+    }
 }

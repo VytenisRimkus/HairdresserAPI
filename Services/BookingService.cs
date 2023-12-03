@@ -21,9 +21,22 @@ public class BookingService : IBookingPrivateService
         return booking;
     }
 
+    public async Task<Booking> CompleteBooking(Guid guid)
+    {
+        var booking = await _bookingRepository.MarkAsCompleted(guid);
+        return booking;
+    }
+
     public async Task<List<Booking>> GetMyBookings(Guid userId)
     {
         var bookings = await _bookingRepository.GetManyById(userId);
+
+        return bookings;
+    }
+
+    public async Task<List<Booking>> GetMyBookingsByHairdresser(Guid guid)
+    {
+        var bookings = await _bookingRepository.GetManyByHairdresserId(guid);
 
         return bookings;
     }

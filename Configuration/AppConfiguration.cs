@@ -46,6 +46,9 @@ public static class AppConfiguration
         services.AddScoped<IBookingPrivateService, BookingService>();
         services.AddScoped<IBookingRepository, BookingRepository>();
 
+        services.AddScoped<IReviewService, ReviewService>();
+        services.AddScoped<IReviewRepository, ReviewRepository>();
+
         services.AddScoped<IAuthService, AuthService>();
     }
 

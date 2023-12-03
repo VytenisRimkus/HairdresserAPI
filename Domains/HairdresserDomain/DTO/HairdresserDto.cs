@@ -1,3 +1,6 @@
+using HairdresserAPI.Domains.HairdresserDomain.DTO;
+using HairdresserAPI.HairdresserDomain.Aggregate;
+
 namespace HairdresserAPI.HairdresserDomain.HairdresserDtos;
 
 public record HairdresserDto
@@ -8,6 +11,7 @@ public record HairdresserDto
     public string PhoneNumber { get; init; }
     public string Email { get; init; }
     public List<TimeSlotDto> TimeSlots { get; init; }
+    public List<BookingDto> Bookings { get; init; }
 }
 
 public record CreateHairdresserDto

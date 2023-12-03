@@ -1,3 +1,4 @@
+using HairdresserAPI.Domains.HairdresserDomain.DTO;
 using HairdresserAPI.HairdresserDomain.Aggregate;
 using HairdresserAPI.HairdresserDomain.HairdresserDtos;
 using HairdresserAPI.Interfaces;
@@ -105,6 +106,16 @@ public class HairdresserPrivateService : IHairdresserPrivateService
                 IsBooked = ts.IsBooked
             }).ToList();
 
+         var bookings = hairdresser.Bookings
+            .Select(ts => new BookingDto
+            {
+                Id = ts.Id.ToString(),
+                UserId = ts.UserId.ToString(),
+                HairdresserId = ts.HairdresserId.ToString(),
+                AppointmentDate = ts.AppointmentDate,
+                IsCompleted = ts.IsCompleted
+            }).ToList();
+
         return new HairdresserDto
         {
             Name = hairdresser.Name,
@@ -112,7 +123,8 @@ public class HairdresserPrivateService : IHairdresserPrivateService
             Location = hairdresser.Location,
             PhoneNumber = hairdresser.PhoneNumber,
             Email = hairdresser.Email,
-            TimeSlots = timeSlotDtos
+            TimeSlots = timeSlotDtos,
+            Bookings = bookings
         };
     }
 }

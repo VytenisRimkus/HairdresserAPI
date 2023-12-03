@@ -39,4 +39,10 @@ public class Service : BaseEntity
     [ForeignKey("Hairdresser")]
     public Guid HairdresserId { get; set; }
     public virtual Hairdresser Hairdresser { get; set; }
+
+    internal void MarkAsCompleted()
+    {
+        throw new NotImplementedException();
+    }
+
 }

@@ -2,6 +2,7 @@ namespace HairdresserAPI.Domains.HairdresserDomain.DTO;
 
 public record BookingDto
 {
+    public string Id { get; set; }
     public string UserId { get; set; }
     public string HairdresserId { get; set; }
     public DateTime AppointmentDate { get; set; }
