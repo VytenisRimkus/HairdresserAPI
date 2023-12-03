@@ -12,6 +12,7 @@ public record HairdresserDto
     public string Email { get; init; }
     public List<TimeSlotDto> TimeSlots { get; init; }
     public List<BookingDto> Bookings { get; init; }
+    public List<ReviewDto> Reviews { get; init; }
 }
 
 public record CreateHairdresserDto

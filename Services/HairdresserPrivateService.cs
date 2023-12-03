@@ -106,15 +106,25 @@ public class HairdresserPrivateService : IHairdresserPrivateService
                 IsBooked = ts.IsBooked
             }).ToList();
 
-         var bookings = hairdresser.Bookings
-            .Select(ts => new BookingDto
+        var bookings = hairdresser.Bookings
+           .Select(ts => new BookingDto
+           {
+               Id = ts.Id.ToString(),
+               UserId = ts.UserId.ToString(),
+               HairdresserId = ts.HairdresserId.ToString(),
+               AppointmentDate = ts.AppointmentDate,
+               IsCompleted = ts.IsCompleted
+           }).ToList();
+
+        var reviews = hairdresser.Reviews
+            .Select(ts => new ReviewDto
             {
-                Id = ts.Id.ToString(),
                 UserId = ts.UserId.ToString(),
                 HairdresserId = ts.HairdresserId.ToString(),
-                AppointmentDate = ts.AppointmentDate,
-                IsCompleted = ts.IsCompleted
+                Rating = ts.Rating,
+                Content = ts.Content
             }).ToList();
+
 
         return new HairdresserDto
         {
@@ -124,7 +134,8 @@ public class HairdresserPrivateService : IHairdresserPrivateService
             PhoneNumber = hairdresser.PhoneNumber,
             Email = hairdresser.Email,
             TimeSlots = timeSlotDtos,
-            Bookings = bookings
+            Bookings = bookings,
+            Reviews = reviews
         };
     }
 }
