@@ -12,5 +12,5 @@ public interface ITimeSlotRepository
     Task<TimeSlot> GetTimeSlotByIdAsync(Guid timeSlotId);
     Task<bool> HasOverlap(Guid hairdresserId, DateTime startTime, DateTime endTime);
     Task UpdateTimeSlotStateAsync(Guid guid);
-
+    Task UnreserveTimeSlot(DateTime appointmentDate);
 }

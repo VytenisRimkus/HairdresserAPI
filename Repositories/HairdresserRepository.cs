@@ -20,7 +20,6 @@ public class HairdresserRepository : IHairdresserRepository
             .Include(h => h.AvailableTimeSlots)
             .Include(h => h.Bookings)
             .Include(h => h.Reviews)
-            .Include(h => h.Services)
             .FirstOrDefaultAsync(h => h.Id == id);
         
         return hairdresser;

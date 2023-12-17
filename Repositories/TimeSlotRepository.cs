@@ -72,5 +72,17 @@ public class TimeSlotRepository : ITimeSlotRepository
         _context.Entry(timeSlot).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
+
+    public async Task UnreserveTimeSlot(DateTime appointmentDate)
+    {
+        var timeSlot = await _context.TimeSlots.FirstOrDefaultAsync(x => x.StartTime == appointmentDate);
+
+        if (timeSlot == null)
+            throw new KeyNotFoundException("TimeSlot not found.");
+
+        timeSlot.IsBooked = false;
+        _context.Entry(timeSlot).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+    }
 }
 

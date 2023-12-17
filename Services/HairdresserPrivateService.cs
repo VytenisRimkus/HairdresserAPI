@@ -41,10 +41,10 @@ public class HairdresserPrivateService : IHairdresserPrivateService
         return MapToDtoWithTimeSlots(hairdresser);
     }
 
-    public async Task<HairdresserDto> UpdateHairdresserAsync(Guid id, UpdateHairdresserDto dto, Guid userId)
+    public async Task<HairdresserDto> UpdateHairdresserAsync(Guid id, UpdateHairdresserDto dto)
     {
         var hairdresser = await _hairdresserRepository.GetByIdAsync(id);
-        if (hairdresser == null || hairdresser.CreatedByUserId == userId)
+        if (hairdresser == null)
         {
             throw new Exception("Hairdresser not found.");
         }
