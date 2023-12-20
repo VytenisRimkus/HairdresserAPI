@@ -33,7 +33,6 @@ public class Hairdresser : BaseEntity
     [StringLength(50)]
     public string Location { get; set; }
 
-    public virtual ICollection<Service> Services { get; set; } = new List<Service>();
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
     public virtual ICollection<TimeSlot> AvailableTimeSlots { get; set; } = new List<TimeSlot>();

@@ -8,5 +8,6 @@ public interface IBookingRepository
     Task<List<Booking>> GetManyByHairdresserId(Guid guid);
     Task<List<Booking>> GetManyById(Guid userId);
     Task<Booking> MarkAsCompleted(Guid guid);
+    Task<Booking> Remove(Guid guid);
 }
 

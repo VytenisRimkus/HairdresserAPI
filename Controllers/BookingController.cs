@@ -42,4 +42,11 @@ public class BookingController : ControllerBase
         var booking = await _bookingService.CompleteBooking(Guid.Parse(id));
         return Ok(booking);
     }
+
+    [HttpPut("removeBooking/{id}")]
+    public async Task<IActionResult> RemoveBooking(string id)
+    {
+        var booking = await _bookingService.RemoveBooking(Guid.Parse(id));
+        return Ok(booking);
+    }
 }

@@ -44,10 +44,10 @@ public class HairdresserController : ControllerBase
         return Ok(hairdresserDto);
     }
 
-    [HttpPut("updateHairdresser")]
-    public async Task<ActionResult<HairdresserDto>> Update(Guid id, UpdateHairdresserDto updateHairdresserDto, string userId)
+    [HttpPut("updateHairdresser/{id}")]
+    public async Task<ActionResult<HairdresserDto>> Update(string id, UpdateHairdresserDto updateHairdresserDto)
     {
-        var updatedHairdresserDto = await _hairdresserPrivateService.UpdateHairdresserAsync(id, updateHairdresserDto, Guid.Parse(userId));
+        var updatedHairdresserDto = await _hairdresserPrivateService.UpdateHairdresserAsync(Guid.Parse(id), updateHairdresserDto);
         return Ok(updatedHairdresserDto);
     }
 
