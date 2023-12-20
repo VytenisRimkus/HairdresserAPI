@@ -123,7 +123,7 @@ namespace HairdresserAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Booking");
+                name: "Bookings");
 
             migrationBuilder.DropTable(
                 name: "Reviews");
